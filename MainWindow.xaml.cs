@@ -21,15 +21,15 @@ namespace BazaUczniow
   
     public class Uczen
     {
-        public string m_PESEL;
-        public string m_imie;
-        public string m_drugieImie;
-        public string m_nazwisko;
-        public string m_data;
-        public string m_telefon;
-        public string m_adres;
-        public string m_miejscowosc;
-        public string m_kodPocztowy;
+        public string m_PESEL {get; set;}
+        public string m_imie {get; set;}
+        public string m_drugieImie {get; set;}
+        public string m_nazwisko {get; set;}
+        public string m_data {get; set;}
+        public string m_telefon {get; set;}
+        public string m_adres { get; set; }
+        public string m_miejscowosc {get; set;}
+        public string m_kodPocztowy {get; set;}
 
         public Uczen(string m_PESEL, string m_imie, string m_drugieImie, string m_nazwisko, string  m_data, string m_telefon, string m_adres, string m_miejscowosc, string m_kodPocztowy)
         {
@@ -57,11 +57,18 @@ namespace BazaUczniow
             listView.Items.Add(uczen);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
             AddWindow w = new AddWindow();
             w.parent = this;
             w.Show();
+        }
+
+        private void Usun_Click(object sender, RoutedEventArgs e)
+        {
+            while(listView.SelectedItems.Count > 0) {
+                listView.Items.Remove(listView.SelectedItems[0]);
+            }
         }
     }
 }

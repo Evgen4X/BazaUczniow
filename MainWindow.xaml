@@ -10,8 +10,19 @@
         MinHeight="200">
     <Grid>
         <ListView x:Name="listView" Margin="9,10,10,100">
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    <Setter Property="Padding" Value="5,0,0,0"/>
+                    <Setter Property="Margin" Value="0,0,0,0"/>
+                </Style>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    <Setter Property="Padding" Value="5,0,0,0"/>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
-                <GridView>
+                <GridView AllowsColumnReorder="False">
                     <GridViewColumn Width="100" Header="PESEL" DisplayMemberBinding="{Binding m_PESEL}" />
                     <GridViewColumn Width="100" Header="Imię" DisplayMemberBinding="{Binding m_imie}" />
                     <GridViewColumn Width="100" Header="Drugie imię" DisplayMemberBinding="{Binding m_drugieImie}" />
@@ -26,8 +37,8 @@
         </ListView>
         <Button FontSize="16" Content="Wczytaj z pliku" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Height="35" Margin="10,0,0,55"></Button>
         <Button FontSize="16" Content="Zapisz do pliku" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Width="150"></Button>
-        <Button FontSize="16" Content="Dodaj ucznia" Width="150" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,0,55" Click="Button_Click"></Button>
-        <Button FontSize="16" Content="Usuń zaznaczonych uczniów" Width="150" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,0,10"></Button>
+        <Button FontSize="16" Content="Dodaj ucznia" Width="150" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,0,55" Click="Dodaj_Click"></Button>
+        <Button FontSize="16" Content="Usuń zaznaczonych uczniów" Width="150" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,0,10" Click="Usun_Click"></Button>
         <Button FontSize="16" Content="O programie" Width="150" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,0,0,30"></Button>
     </Grid>
 </Window>
