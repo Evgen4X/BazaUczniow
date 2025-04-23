@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:BazaUczniow"
         mc:Ignorable="d"
         Title="Baza uczniów" Height="720" Width="1080"
-        MinWidth="400"
-        MinHeight="200">
+        MinWidth="900"
+        MinHeight="300">
     <Grid>
         <ListView x:Name="listView" Margin="9,10,10,100">
             <ListView.Resources>
@@ -35,10 +35,12 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button FontSize="16" Content="Wczytaj z pliku" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Height="35" Margin="10,0,0,55"></Button>
-        <Button FontSize="16" Content="Zapisz do pliku" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Width="150"></Button>
-        <Button FontSize="16" Content="Dodaj ucznia" Width="150" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,0,55" Click="Dodaj_Click"></Button>
-        <Button FontSize="16" Content="Usuń zaznaczonych uczniów" Width="150" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,0,10" Click="Usun_Click"></Button>
-        <Button FontSize="16" Content="O programie" Width="150" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,0,0,30"></Button>
+        <Button FontSize="16" Content="Wczytaj z pliku" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Height="35" Margin="10,0,0,55" Click="Wczytaj_Click"></Button>
+        <Button FontSize="16" Content="Zapisz do pliku" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Width="200" Click="Zapisz_Click"></Button>
+        <Button FontSize="16" Content="Dodaj z pliku" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,225,55" Click="Dodaj2_Click"></Button>
+        <Button FontSize="16" Content="Dodaj ucznia" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,-225,55" Click="Dodaj_Click"></Button>
+        <Button FontSize="16" Content="Usuń zaznaczonych" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,225,10" Click="Usun_Click"></Button>
+        <Button FontSize="16" Content="Zaznacz złe numery PESEL" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,-225,10" Click="Zaznaczzle_Click"></Button>
+        <Button FontSize="16" Content="O programie" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,0,0,30"></Button>
     </Grid>
 </Window>

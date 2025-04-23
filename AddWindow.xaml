@@ -26,7 +26,7 @@
         <TextBox x:Name="i_miejscowosc" HorizontalAlignment="Left" Margin="450,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="25"/>
         <Label HorizontalContentAlignment="Right" Content="Kod pocztowy *" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,170,0,0" Width="140" Height="25"></Label>
         <TextBox x:Name="i_kodPocztowy" HorizontalAlignment="Left" Margin="150,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="25"/>
-        <Label x:Name="info" Foreground="Red" Content="" HorizontalAlignment="Left" Margin="150,200,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="l_info" Foreground="Red" Content="" HorizontalAlignment="Left" Margin="150,200,0,0" VerticalAlignment="Top"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="150,0,0,10" Width="50" Height="25" VerticalAlignment="Bottom" Click="Cancel_Click"/>
         <Button Content="Generuj" HorizontalAlignment="Left" Margin="300,0,0,10" Width="50" Height="25" VerticalAlignment="Bottom" Click="Generuj_Click"/>
         <Button Content="OK" HorizontalAlignment="Left" Margin="450,0,0,10" Width="50" Height="25" VerticalAlignment="Bottom" Click="Ok_Click"/>

@@ -42,6 +42,11 @@ namespace BazaUczniow
                 }
             }
 
+            if(i_data.Text == "Podaj numer PESEL" || i_data.Text.Trim().Length == 0) {
+                i_data.Background = Brushes.Red;
+                flag = false;
+            }
+
             return flag;
         }
 
@@ -63,6 +68,7 @@ namespace BazaUczniow
         {
             if (!IsAllFilled())
             {
+                l_info.Content = "Wypełnij wszystkie wymagane pola";
                 return;
             }
 
@@ -105,10 +111,13 @@ namespace BazaUczniow
             i_drugieImie.Text = imiona[rnd.Next(0, imiona.Count)];
 
             List<string> nazwiska = new List<string>() { "Kowalski", "Nowak", "Kowalska" };
-            i_imie.Text = nazwiska[rnd.Next(0, nazwiska.Count)];
+            i_nazwisko.Text = nazwiska[rnd.Next(0, nazwiska.Count)];
 
             List<string> miejscowosci = new List<string>() { "Tarnów", "Kraków", "Warszawa", "Washington" };
-            i_imie.Text = miejscowosci[rnd.Next(0, miejscowosci.Count)];
+            i_miejscowosc.Text = miejscowosci[rnd.Next(0, miejscowosci.Count)];
+
+            i_adres.Text = "ul. Polna 3";
+            i_kodPocztowy.Text = "33-103";
         }
 
         private void i_pesel_TextChanged(object sender, TextChangedEventArgs e)
@@ -151,10 +160,10 @@ namespace BazaUczniow
                 {
                     DateTime data = new DateTime(year, month, day);
                     i_data.Text = data.ToShortDateString();
-                } catch (Exception ex)
+                } catch (Exception)
                 {
                     i_data.Text = "00.00.0000";
-                    info.Content = "Numer PESEL nie istnieje";
+                    l_info.Content = "Numer PESEL nie istnieje";
                 }
             } else
             {
