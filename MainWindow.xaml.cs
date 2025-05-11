@@ -1,15 +1,33 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Data.SqlTypes;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace BazaUczniow
 {
     /// <summary>
     /// Logika interakcji dla klasy MainWindow.xaml
     /// </summary>
+    
+    public class Tools
+    {
+        public static int getControlDigit(string pesel)
+        {
+            int sum = 0;
+            int[] weights = { 1, 3, 7, 9 };
+            for (int i = 0; i < 10; ++i)
+            {
+                sum += ((pesel[i] - '0') * weights[i % 4]) % 10;
+            }
+
+            return 10 - (sum % 10);
+        }
+    }
   
     public class Uczen
     {
@@ -71,28 +89,65 @@ namespace BazaUczniow
 
         private void Zaznaczzle_Click(object sender, RoutedEventArgs e)
         {
-            //int i = 0;
-            //foreach(Uczen uczen in listView.Items)
-            //{
-            //    Type ucz = listView.Items.GetItemAt(i).GetType();
-            //    if(uczen.m_PESEL.Length != 11)
-            //    {
-            //        ucz.IsSelected = true;
-            //    }
-            //    int control = 0;
-            //    int[] weights = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
-            //    for(int j = 0; j < 10; ++j) {
-            //        control += ((uczen.m_PESEL[j] - '0') * weights[j]) % 10;
-            //    }
+            int i = 0;
+            foreach (Uczen uczen in listView.Items)
+            {
+                if (!checkPesel(uczen.m_PESEL))
+                {
+                    listView.SelectedItems.Add(uczen);
+                }
+            }
+        }
 
-            //    control = 10 - (control % 10);
-            //    if(control != (uczen.m_PESEL[10] - '0'))
-            //    {
-            //        ucz.IsSelected = false;
-            //    }
+        private bool checkPesel(string pesel)
+        {
+            if(pesel.Length != 11)
+            {
+                Debug.WriteLine("!");
+                return false;
+            }
+            string yy = pesel.Substring(0, 2);
+            string mm = pesel.Substring(2, 2);
+            string dd = pesel.Substring(4, 2);
 
-            //    ++i;
-            //}
+            int day = Convert.ToInt32(dd);
+            int month = Convert.ToInt32($"{mm[0] % 2}{mm[1]}");
+            int year = Convert.ToInt32(yy) + 1800;
+            if (mm[0] <= '1')
+            {
+                year += 100;
+            }
+            else if (mm[0] <= '3')
+            {
+                year += 200;
+            }
+            else if (mm[0] <= '5')
+            {
+                year += 300;
+            }
+            else if (mm[0] <= '7')
+            {
+                year += 400;
+            }
+
+            try
+            {
+                DateTime data = new DateTime(year, month, day);
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("!!");
+                return false;
+            }
+
+            if (Tools.getControlDigit(pesel) != pesel[10] - '0')
+            {
+                Debug.Write("!!!");
+                return false;
+            }
+                 
+
+            return true;
         }
 
         private void Button_Click(MainWindow _) { }
@@ -185,6 +240,13 @@ namespace BazaUczniow
                 }
 
             }
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            String text = "Program desktopowy BazaUczniow napisany w języku C# z użyciem WPF\n" +
+                "Opcja 'generuj' przy dodawaniu ucznia zawsze generuje poprawne numery PESEL";
+            MessageBox.Show(text, "O programie", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

@@ -41,6 +41,6 @@
         <Button FontSize="16" Content="Dodaj ucznia" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,-225,55" Click="Dodaj_Click"></Button>
         <Button FontSize="16" Content="Usuń zaznaczonych" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,225,10" Click="Usun_Click"></Button>
         <Button FontSize="16" Content="Zaznacz złe numery PESEL" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,-225,10" Click="Zaznaczzle_Click"></Button>
-        <Button FontSize="16" Content="O programie" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,0,0,30"></Button>
+        <Button FontSize="16" Content="O programie" Width="200" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,0,0,30" Click="About_Click"></Button>
     </Grid>
 </Window>

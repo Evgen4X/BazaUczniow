@@ -94,30 +94,34 @@ namespace BazaUczniow
         private void Generuj_Click(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
-            string pesel = rnd.Next(10, 99).ToString();
-            int month = rnd.Next(1, 12) + (20 * rnd.Next(0, 4));
+            string pesel = rnd.Next(10, 99).ToString(); //rr
+            int month = rnd.Next(1, 12) + (20 * rnd.Next(0, 4)); 
             if(month < 10)
             {
                 pesel += '0';
             }
-            pesel += month.ToString();
-            pesel += rnd.Next(10, 28).ToString();
+            pesel += month.ToString(); //mm
+            pesel += rnd.Next(10, 28).ToString(); //dd
             pesel += rnd.Next(1000, 9999).ToString();
+
+            pesel += Tools.getControlDigit(pesel);
 
             i_pesel.Text = pesel;
 
-            List<string> imiona = new List<string>() { "Jan", "Anna", "Marcin", "Jolanta" };
+            List<string> imiona = new List<string>() { "Jan", "Anna", "Marcin", "Jolanta", "Kamil", "Edyta", "Dominik", "Dagmara", "Julia", "Krystian" };
             i_imie.Text = imiona[rnd.Next(0, imiona.Count)];
             i_drugieImie.Text = imiona[rnd.Next(0, imiona.Count)];
 
-            List<string> nazwiska = new List<string>() { "Kowalski", "Nowak", "Kowalska" };
+            List<string> nazwiska = new List<string>() {"Nowak", "Sinkiewicz", "Szewc", "Waśkiewicz", "Skalik", "Kuczak", "Pasieczny" };
             i_nazwisko.Text = nazwiska[rnd.Next(0, nazwiska.Count)];
 
-            List<string> miejscowosci = new List<string>() { "Tarnów", "Kraków", "Warszawa", "Washington" };
+            i_telefon.Text = rnd.Next(100000000, 999999999).ToString();
+
+            List<string> miejscowosci = new List<string>() { "Tarnów", "Kraków", "Warszawa", "Lublin", "Gdańsk", "Rzeszów", "Washington" };
             i_miejscowosc.Text = miejscowosci[rnd.Next(0, miejscowosci.Count)];
 
-            i_adres.Text = "ul. Polna 3";
-            i_kodPocztowy.Text = "33-103";
+            i_adres.Text = "ul. Polna " + rnd.Next(1, 999);
+            i_kodPocztowy.Text = rnd.Next(10, 99) + "-" + rnd.Next(100, 999);
         }
 
         private void i_pesel_TextChanged(object sender, TextChangedEventArgs e)
